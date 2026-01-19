@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESPR Creative Lab | Digital Innovation Studio</title>
+    <meta name="description" content="ESPR Creative Lab Private Limited - Building innovative digital solutions for emerging markets. Explore our portfolio of apps transforming healthcare, education, and local economies.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-black: #0a0a0a;
+            --color-white: #fafafa;
+            --color-cream: #f5f3ef;
+            --color-gray: #6b6b6b;
+            --color-gray-light: #e8e8e8;
+            --font-serif: 'Cormorant Garamond', Georgia, serif;
+            --font-sans: 'Inter', -apple-system, sans-serif;
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--color-white);
+            color: var(--color-black);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        ::selection {
+            background: var(--color-black);
+            color: var(--color-white);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            mix-blend-mode: difference;
+        }
+
+        .logo {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--color-white);
+            text-decoration: none;
+            letter-spacing: 0.1em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--color-white);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.6;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: var(--color-black);
+            color: var(--color-white);
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(ellipse at 20% 80%, rgba(120, 80, 200, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(200, 80, 120, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(80, 120, 200, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 1;
+            max-width: 1000px;
+        }
+
+        .hero-label {
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            opacity: 0.7;
+        }
+
+        .hero h1 {
+            font-family: var(--font-serif);
+            font-size: clamp(3rem, 12vw, 10rem);
+            font-weight: 300;
+            line-height: 0.95;
+            letter-spacing: -0.02em;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 span {
+            display: block;
+            font-style: italic;
+            font-weight: 300;
+        }
+
+        .hero-tagline {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            font-weight: 300;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            opacity: 0.8;
+            line-height: 1.8;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            opacity: 0.5;
+        }
+
+        .scroll-indicator::after {
+            content: '';
+            width: 1px;
+            height: 60px;
+            background: linear-gradient(to bottom, var(--color-white), transparent);
+            animation: scroll-line 2s ease-in-out infinite;
+        }
+
+        @keyframes scroll-line {
+            0%, 100% { transform: scaleY(1); opacity: 1; }
+            50% { transform: scaleY(0.5); opacity: 0.3; }
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 3rem;
+        }
+
+        .section-header {
+            max-width: 1400px;
+            margin: 0 auto 3rem;
+        }
+
+        .section-number {
+            font-family: var(--font-serif);
+            font-size: 0.875rem;
+            color: var(--color-gray);
+            margin-bottom: 1rem;
+            letter-spacing: 0.1em;
+        }
+
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 400;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Projects Section */
+        .projects {
+            background: var(--color-cream);
+        }
+
+        .projects-intro {
+            max-width: 800px;
+            font-size: 1.125rem;
+            line-height: 2;
+            color: var(--color-gray);
+        }
+
+        /* Project Card */
+        .project {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 3rem 0;
+            border-bottom: 1px solid var(--color-gray-light);
+        }
+
+        .project:last-child {
+            border-bottom: none;
+        }
+
+        .project-inner {
+            display: grid;
+            grid-template-columns: 400px 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .project:nth-child(even) .project-inner {
+            direction: rtl;
+        }
+
+        .project:nth-child(even) .project-inner > * {
+            direction: ltr;
+        }
+
+        .project-visual {
+            aspect-ratio: 3/2;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            max-width: 400px;
+        }
+
+        .project-visual-inner {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.8s var(--ease-out-expo);
+        }
+
+        .project:hover .project-visual-inner {
+            transform: scale(1.05);
+        }
+
+        /* Project-specific gradients */
+        .project-jobnobs .project-visual-inner {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+        }
+
+        .project-moovet .project-visual-inner {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 50%, #a8e063 100%);
+        }
+
+        .project-teleheal .project-visual-inner {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 50%, #43e97b 100%);
+        }
+
+        .project-soundlab .project-visual-inner {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 50%, #fa709a 100%);
+        }
+
+        .project-genius .project-visual-inner {
+            background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 50%, #a6c1ee 100%);
+        }
+
+        .project-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3rem;
+            opacity: 0.9;
+        }
+
+        .project-content {
+            padding: 1rem 0;
+        }
+
+        .project-category {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--color-gray);
+            margin-bottom: 1rem;
+        }
+
+        .project-name {
+            font-family: var(--font-serif);
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+            line-height: 1.1;
+        }
+
+        .project-tagline {
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            font-style: italic;
+            color: var(--color-gray);
+            margin-bottom: 1rem;
+        }
+
+        .project-description {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: var(--color-gray);
+            margin-bottom: 1.5rem;
+        }
+
+        .project-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-tag {
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            padding: 0.5rem 1rem;
+            background: var(--color-black);
+            color: var(--color-white);
+            border-radius: 100px;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--color-black);
+            text-decoration: none;
+            transition: gap 0.3s ease;
+        }
+
+        .project-link:hover {
+            gap: 1.25rem;
+        }
+
+        .project-link::after {
+            content: '→';
+            transition: transform 0.3s ease;
+        }
+
+        .project-link:hover::after {
+            transform: translateX(4px);
+        }
+
+        /* About Section */
+        .about {
+            background: var(--color-black);
+            color: var(--color-white);
+        }
+
+        .about .section-number {
+            color: rgba(255,255,255,0.5);
+        }
+
+        .about-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+        }
+
+        .about-text {
+            font-family: var(--font-serif);
+            font-size: clamp(1.5rem, 3vw, 2.25rem);
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        .about-text em {
+            font-style: italic;
+        }
+
+        .about-details {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        .about-item h3 {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        .about-item p {
+            font-size: 1rem;
+            line-height: 1.8;
+            opacity: 0.8;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--color-cream);
+            text-align: center;
+        }
+
+        .contact-inner {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact h2 {
+            font-family: var(--font-serif);
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 300;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+        }
+
+        .contact h2 span {
+            font-style: italic;
+        }
+
+        .contact-email {
+            font-family: var(--font-serif);
+            font-size: clamp(1.25rem, 3vw, 2rem);
+            color: var(--color-black);
+            text-decoration: none;
+            border-bottom: 1px solid var(--color-black);
+            padding-bottom: 0.25rem;
+            transition: opacity 0.3s ease;
+        }
+
+        .contact-email:hover {
+            opacity: 0.6;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--color-black);
+            color: var(--color-white);
+            padding: 3rem;
+        }
+
+        .footer-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-logo {
+            font-family: var(--font-serif);
+            font-size: 1.25rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+        }
+
+        .footer-text {
+            font-size: 0.85rem;
+            opacity: 0.6;
+        }
+
+        .footer-legal {
+            font-size: 0.75rem;
+            opacity: 0.4;
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            section {
+                padding: 5rem 2rem;
+            }
+
+            .project-inner {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .project:nth-child(even) .project-inner {
+                direction: ltr;
+            }
+
+            .project-visual {
+                aspect-ratio: 16/10;
+                max-width: 100%;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            section {
+                padding: 4rem 1.5rem;
+            }
+
+            .section-header {
+                margin-bottom: 3rem;
+            }
+
+            .project {
+                padding: 3rem 0;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+
+        /* Animations */
+        @keyframes fade-up {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-on-scroll {
+            animation: fade-up 0.8s var(--ease-out-expo) forwards;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#" class="logo">ESPR</a>
+        <ul class="nav-links">
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <p class="hero-label">Digital Innovation Studio</p>
+            <h1>
+                ESPR
+                <span>Creative Lab</span>
+            </h1>
+            <p class="hero-tagline">
+                We design and build digital products that transform healthcare, education,
+                and local economies across emerging markets.
+            </p>
+        </div>
+        <div class="scroll-indicator">
+            Scroll
+        </div>
+    </section>
+
+    <section class="projects" id="projects">
+        <div class="section-header">
+            <p class="section-number">01</p>
+            <h2 class="section-title">Our Portfolio</h2>
+            <p class="projects-intro">
+                Each project in our portfolio represents a thoughtful response to real-world challenges
+                faced by communities in Northeast India and beyond. We build with purpose, design with empathy,
+                and scale with intention.
+            </p>
+        </div>
+
+        <!-- Jobnobs -->
+        <article class="project project-jobnobs">
+            <div class="project-inner">
+                <div class="project-visual">
+                    <div class="project-visual-inner">
+                        <span class="project-icon">💼</span>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <p class="project-category">Employment Platform</p>
+                    <h3 class="project-name">Jobnobs</h3>
+                    <p class="project-tagline">"Uber for micro-jobs meets Duolingo for employability"</p>
+                    <p class="project-description">
+                        A mobile platform connecting college students in Aizawl, Mizoram with flexible
+                        part-time jobs and skill-building opportunities. Students earn through quick gigs,
+                        learn job-ready skills through gamified micro-courses, and build verified work profiles
+                        with trust scores and badges.
+                    </p>
+                    <div class="project-features">
+                        <span class="feature-tag">Instant Matching</span>
+                        <span class="feature-tag">Gamified Learning</span>
+                        <span class="feature-tag">Trust Scoring</span>
+                        <span class="feature-tag">Bilingual</span>
+                        <span class="feature-tag">UPI Integration</span>
+                    </div>
+                    <a href="https://www.jobnobs.com" class="project-link" target="_blank">Visit Website</a>
+                </div>
+            </div>
+        </article>
+
+        <!-- Moovet -->
+        <article class="project project-moovet">
+            <div class="project-inner">
+                <div class="project-visual">
+                    <div class="project-visual-inner">
+                        <span class="project-icon">🐄</span>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <p class="project-category">AgriTech & Animal Care</p>
+                    <h3 class="project-name">Moovet</h3>
+                    <p class="project-tagline">"Digital vet + farm manager built for rural realities"</p>
+                    <p class="project-description">
+                        A smart livestock and pet care platform designed for farmers, breeders, and pet owners
+                        in Mizoram and the North East. Track animal health, vaccinations, breeding cycles,
+                        and get AI-backed guidance with tele-veterinary consultations—all with an offline-first
+                        design for rural connectivity.
+                    </p>
+                    <div class="project-features">
+                        <span class="feature-tag">Health Tracking</span>
+                        <span class="feature-tag">Tele-Vet</span>
+                        <span class="feature-tag">AI Guidance</span>
+                        <span class="feature-tag">Multi-Species</span>
+                        <span class="feature-tag">Offline-First</span>
+                    </div>
+                    <a href="#" class="project-link">Coming Soon</a>
+                </div>
+            </div>
+        </article>
+
+        <!-- Teleheal -->
+        <article class="project project-teleheal">
+            <div class="project-inner">
+                <div class="project-visual">
+                    <div class="project-visual-inner">
+                        <span class="project-icon">🏥</span>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <p class="project-category">Healthcare</p>
+                    <h3 class="project-name">Teleheal</h3>
+                    <p class="project-tagline">"Digital hospital in your pocket"</p>
+                    <p class="project-description">
+                        A telemedicine and health-access platform built for underserved and low-connectivity
+                        communities. Consult doctors remotely, receive e-prescriptions, book tests, and get
+                        medicines delivered. Physical Teleheal kiosks enable healthcare access for elderly
+                        patients and those without smartphones.
+                    </p>
+                    <div class="project-features">
+                        <span class="feature-tag">Video Consults</span>
+                        <span class="feature-tag">E-Prescriptions</span>
+                        <span class="feature-tag">Health Kiosks</span>
+                        <span class="feature-tag">Lab Integration</span>
+                        <span class="feature-tag">Multi-Language</span>
+                    </div>
+                    <a href="#" class="project-link">Coming Soon</a>
+                </div>
+            </div>
+        </article>
+
+        <!-- Cultural Sound Lab -->
+        <article class="project project-soundlab">
+            <div class="project-inner">
+                <div class="project-visual">
+                    <div class="project-visual-inner">
+                        <span class="project-icon">🎵</span>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <p class="project-category">Cultural Heritage</p>
+                    <h3 class="project-name">Cultural Sound Lab</h3>
+                    <p class="project-tagline">"Spotify meets cultural preservation—with creator ownership"</p>
+                    <p class="project-description">
+                        A digital platform for preserving, producing, and monetizing Indigenous and traditional
+                        music. Artists and elders can record, archive, and share traditional songs with proper
+                        attribution and rights protection. Discover rare cultural music and experience living
+                        heritage beyond mainstream media.
+                    </p>
+                    <div class="project-features">
+                        <span class="feature-tag">Audio Archiving</span>
+                        <span class="feature-tag">Rights Protection</span>
+                        <span class="feature-tag">Community Curation</span>
+                        <span class="feature-tag">Global Access</span>
+                    </div>
+                    <a href="#" class="project-link">Coming Soon</a>
+                </div>
+            </div>
+        </article>
+
+        <!-- GeniusQuizzes -->
+        <article class="project project-genius">
+            <div class="project-inner">
+                <div class="project-visual">
+                    <div class="project-visual-inner">
+                        <span class="project-icon">📚</span>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <p class="project-category">EdTech</p>
+                    <h3 class="project-name">GeniusQuizzes</h3>
+                    <p class="project-tagline">"Duolingo-style learning for serious exams"</p>
+                    <p class="project-description">
+                        A smart exam-prep and learning platform for competitive exams in India. Practice
+                        UPSC, State PSC, NET, Banking & Judiciary questions daily with instant feedback
+                        and explanations. Track progress, build consistency through streaks, and prepare
+                        with a mobile-first, distraction-free design.
+                    </p>
+                    <div class="project-features">
+                        <span class="feature-tag">Question Banks</span>
+                        <span class="feature-tag">Instant Feedback</span>
+                        <span class="feature-tag">Progress Analytics</span>
+                        <span class="feature-tag">Mobile-First</span>
+                    </div>
+                    <a href="#" class="project-link">Coming Soon</a>
+                </div>
+            </div>
+        </article>
+    </section>
+
+    <section class="about" id="about">
+        <div class="section-header">
+            <p class="section-number">02</p>
+            <h2 class="section-title">About Us</h2>
+        </div>
+        <div class="about-grid">
+            <div class="about-text">
+                <p>
+                    ESPR Creative Lab is a <em>digital innovation studio</em>.
+                    We believe that the most meaningful technology solves <em>real problems</em> for
+                    <em>real communities</em>—not just the privileged few.
+                </p>
+            </div>
+            <div class="about-details">
+                <div class="about-item">
+                    <h3>Our Focus</h3>
+                    <p>
+                        Healthcare access, skill-based employment, agricultural technology,
+                        cultural preservation, and education—designed for emerging markets
+                        and underserved communities.
+                    </p>
+                </div>
+                <div class="about-item">
+                    <h3>Our Approach</h3>
+                    <p>
+                        We design for real-world constraints: low connectivity, limited smartphone
+                        access, multilingual users, and unique local needs. Technology should adapt
+                        to people, not the other way around.
+                    </p>
+                </div>
+                <div class="about-item">
+                    <h3>Our Vision</h3>
+                    <p>
+                        Building for our community first,
+                        then scaling to similar markets across the region and beyond.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="contact-inner">
+            <p class="section-number">03</p>
+            <h2>Let's build <span>something</span> together</h2>
+            <a href="mailto:hello@esprcreativelab.com" class="contact-email">hello@esprcreativelab.com</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-inner">
+            <p class="footer-logo">ESPR Creative Lab</p>
+            <p class="footer-text">Private Limited Company</p>
+        </div>
+        <p class="footer-legal">
+            &copy; 2024 ESPR Creative Lab Private Limited. All rights reserved.
+        </p>
+    </footer>
+
+    <script>
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all projects
+        document.querySelectorAll('.project').forEach(project => {
+            project.style.opacity = '0';
+            project.style.transform = 'translateY(40px)';
+            project.style.transition = 'opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
+            observer.observe(project);
+        });
+    </script>
+</body>
+</html>
